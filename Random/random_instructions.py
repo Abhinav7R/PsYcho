@@ -198,7 +198,7 @@ def block_back_color_explanation():
 #         you should press the <highlight>RIGHT</highlight> arrow key.
 #     """
 
-    display_colored_text_until_space(example_text)
+    # display_colored_text_until_space(example_text)
 
 def run_block_instructions():
     """Run all block instruction slides in sequence"""
