@@ -200,7 +200,7 @@ def block_back_color_explanation():
 
     # display_colored_text_until_space(example_text)
 
-def run_block_instructions():
+def run_random_instructions():
     """Run all block instruction slides in sequence"""
     welcome_block_screen()
     block_explanation()
