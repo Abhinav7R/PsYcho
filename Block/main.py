@@ -1,7 +1,7 @@
 from tasks import *
 import argparse
 from analysis import *
-
+from block_instructions import *
 parser = argparse.ArgumentParser(description='Run the experiment')
 parser.add_argument('--num_neutral', type=int, default=1, help='Number of neutral tasks')
 parser.add_argument('--num_block', type=int, default=0, help='Number of block tasks')
@@ -229,6 +229,7 @@ def randomize_order_of_tasks():
 
 
 def driver():
+    run_block_instructions()
     with open('data.csv', 'w') as file:
         file.write('polarity,todotask,othertask,correct,total_time,key_pressed,time_taken\n')
 
