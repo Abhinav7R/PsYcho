@@ -7,7 +7,7 @@ from audio_processing.transcriber import *
 import argparse
 import threading
 import json
-
+from test_instructions import *
 # Initialize Pygame
 pygame.init()
 
@@ -192,7 +192,8 @@ def get_user_id():
     return new_id
 
 # Main function to run the experiment
-def main():
+def og_stroop():
+    run_instructions()
     user_id = get_user_id()
     print(f"User ID: {user_id}")
 
@@ -215,5 +216,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    og_stroop()
 
