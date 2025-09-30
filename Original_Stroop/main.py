@@ -37,13 +37,13 @@ pygame.display.set_caption("OG Stroop Test")
 COLORS = {
     "RED": (255, 0, 0),
     "GREEN": (0, 255, 0),
-    "BLUE": (0, 0, 255),
+    "BLUE": (36, 137, 245),
     "YELLOW": (255, 255, 0),
 }
 COLOR_NAMES = list(COLORS.keys())
 
 # Font settings
-FONT = pygame.font.Font(None, 80)
+FONT = pygame.font.Font(None, 160)
 
 # Experiment parameters
 num_neutral = config["num_neutral"]
@@ -88,6 +88,8 @@ def display_text_until_space(text, color):
 
 def display_text_for_duration(text, color, duration):
     screen.fill(background_color)
+    if(type(color) == str):
+        color = COLORS[color]
     text_surface = FONT.render(text, True, color)
     text_rect = text_surface.get_rect(center=(WIDTH // 2, HEIGHT // 2))
     screen.blit(text_surface, text_rect)

@@ -263,7 +263,7 @@ you should say the COLOR the word appears in,
 regardless of what the word says.
 
 For example:
-If you see the word <blue>RED</blue> in blue color,
+If you see the word <blue>RED</blue> (in <blue>blue</blue> color),
 you should say "BLUE"."""
     
     display_colored_text_until_space(instruction_text, text_color)
