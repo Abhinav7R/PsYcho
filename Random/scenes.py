@@ -1,8 +1,11 @@
 import pygame
 import numpy as np
 import soundfile as sf
+from time import sleep as sl
 
 from utils import *
+
+inter_stimulus_interval = 0.3  # seconds
 
 class Movement(object):
     '''
@@ -133,6 +136,11 @@ class Movement(object):
         # if ('dot' in self.mode or 'plus' in self.mode or 'arrow' in self.mode):
         #     self.display.screen.blit(self.object[-1], self.position)
         # pygame.display.update()
+        
+        # Inter-stimulus interval
+        self.display.screen.fill(self.display.color)
+        pygame.display.flip()
+        sl(inter_stimulus_interval)
 
         with open("data.csv", "a") as file:
             file.write(f"{key_pressed},{time_taken}\n")

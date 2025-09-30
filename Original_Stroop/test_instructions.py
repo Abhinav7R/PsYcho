@@ -5,7 +5,7 @@ import sys
 pygame.init()
 
 # Screen settings
-WIDTH, HEIGHT = 1700, 900
+WIDTH, HEIGHT = 1800, 900
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Stroop Test - Instructions")
 

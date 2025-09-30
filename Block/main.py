@@ -6,16 +6,16 @@ parser = argparse.ArgumentParser(description='Run the experiment')
 parser.add_argument('--num_neutral', type=int, default=1, help='Number of neutral tasks')
 parser.add_argument('--num_block', type=int, default=0, help='Number of block tasks')
 parser.add_argument('--num_mixed', type=int, default=0, help='Number of mixed tasks')
-parser.add_argument('--screen_width', type=int, default=1700, help='Width of the screen')
+parser.add_argument('--screen_width', type=int, default=1800, help='Width of the screen')
 parser.add_argument('--screen_height', type=int, default=900, help='Height of the screen')
 parser.add_argument('--speed', type=int, default=250, help='Speed of the arrow')
 
 args = parser.parse_args()
 config = vars(args)
 
-screen_width = 1700
+screen_width = 1800
 screen_height = 900
-text_pause_time = 3.5
+text_pause_time = 3
 screen = Stage((255, 255, 255), width=screen_width, height=screen_height)
 timer = Timer(screen, 50)
 screen.createWindow(screen_width, screen_height, 'Trial Run 1')
@@ -323,11 +323,13 @@ def driver():
         else:
             print("Invalid task")
     
-    write_and_pause(screen, 'Thank you for participating :)', text_pause_time)
+    # write_and_pause(screen, 'Thank you for participating :)', text_pause_time)
 
     user_id = get_user_id()
     with open('data.csv', 'r') as file:
         data = file.read()
+    os.makedirs('data', exist_ok=True)
+    os.makedirs('results', exist_ok=True)
     with open(f'data/{user_id}.csv', 'w') as file:
         file.write(data)
 

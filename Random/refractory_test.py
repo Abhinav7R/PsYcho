@@ -84,7 +84,7 @@ def run_refractory_test(color_assoc: dict=color_assoc, color_vals: dict=color_va
     Test.cleanup()
     
 
-run_refractory_test(screen_size=(1700, 900))
+run_refractory_test(screen_size=(1800, 900))
 
 
 

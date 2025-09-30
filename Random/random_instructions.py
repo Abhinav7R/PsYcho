@@ -2,13 +2,11 @@ import pygame
 import sys
 import re
 
-from sympy import sequence
-
 # Initialize Pygame
 pygame.init()
 
 # Screen settings
-WIDTH, HEIGHT = 1700, 900
+WIDTH, HEIGHT = 1800, 900
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Block Stroop Test - Instructions")
 
@@ -185,20 +183,6 @@ def block_back_color_explanation():
     
     display_colored_text_until_space(neutral_text)
 
-# def example_slide():
-#     """Show example slide with colored text"""
-#     example_text = """
-#         For example, if the background is <red>Red</red> and the arrow is pointing Left,
-#         you should press the <highlight>LEFT</highlight> arrow key.
-
-#         If the background is <green>Green</green> and you hear a beep in your Right ear,
-#         you should press the <highlight>RIGHT</highlight> arrow key.
-
-#         If the background is <blue>Blue</blue> and the arrow is pointing Right,
-#         you should press the <highlight>RIGHT</highlight> arrow key.
-#     """
-
-    # display_colored_text_until_space(example_text)
 
 def run_random_instructions():
     """Run all block instruction slides in sequence"""
@@ -214,7 +198,7 @@ def run_random_instructions():
 def main():
     """Main function to test the block instruction slides"""
     try:
-        run_block_instructions()
+        run_random_instructions()
         
         # Show completion message
         completion_text = """Block Instructions Complete!

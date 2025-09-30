@@ -1,21 +1,21 @@
 from tasks import *
 import argparse
 from analysis import *
-
+from random_instructions import *
 parser = argparse.ArgumentParser(description='Run the experiment')
 parser.add_argument('--num_neutral', type=int, default=1, help='Number of neutral tasks')
 parser.add_argument('--num_block', type=int, default=0, help='Number of block tasks')
 parser.add_argument('--num_mixed', type=int, default=0, help='Number of mixed tasks')
-parser.add_argument('--screen_width', type=int, default=1700, help='Width of the screen')
+parser.add_argument('--screen_width', type=int, default=1800, help='Width of the screen')
 parser.add_argument('--screen_height', type=int, default=900, help='Height of the screen')
 parser.add_argument('--speed', type=int, default=250, help='Speed of the arrow')
 
 args = parser.parse_args()
 config = vars(args)
 
-screen_width = 1700
+screen_width = 1800
 screen_height = 900
-text_pause_time = 2
+text_pause_time = 3
 screen = Stage((255, 255, 255), width=screen_width, height=screen_height)
 timer = Timer(screen, 50)
 screen.createWindow(screen_width, screen_height, 'Trial Run 1')
@@ -31,8 +31,20 @@ parameters = {
 pause(1)
 
 def movement_direction(num_neutral, num_block, num_mixed):
-
-    write_and_pause(screen, 'Movement and Direction', text_pause_time)
+    
+    # write_and_pause(screen, 'Movement and Direction', text_pause_time)
+    display_colored_text_until_space("""<red>Movement</red> and <blue>Direction</blue>
+                             
+    You will be asked to respond to one of the two stimuli:
+    1. Movement : Where the object is moving.
+    2. Direction : Where the arrow head is pointing.
+    
+    When the background is <red>RED</red>, respond to Movement.
+    When the background is <blue>BLUE</blue>, respond to Direction.
+    
+    Press the left or right arrow key
+    based on the movement or direction
+    as indicated by the background colour.""")
 
     # write_and_pause(screen, 'Neutral Mode', text_pause_time)
     # Neutral_obj = Neutral(screen, timer)
@@ -62,7 +74,7 @@ def movement_direction(num_neutral, num_block, num_mixed):
 
 
     # mixed design
-    write_and_pause(screen, 'Mixed Cases - RANDOM', text_pause_time)
+    # write_and_pause(screen, 'Mixed Cases - RANDOM', text_pause_time)
     choice_mat = np.ones((2, 2))*num_mixed
     choice_array_mixed = ['00' for i in range(num_mixed)] + ['01' for i in range(num_mixed)] + ['10' for i in range(num_mixed)] + ['11' for i in range(num_mixed)]
     np.random.shuffle(choice_array_mixed)
@@ -91,7 +103,19 @@ def movement_direction(num_neutral, num_block, num_mixed):
 
 def sound_movement(num_neutral, num_block, num_mixed):
     
-    write_and_pause(screen, 'Sound and Movement', text_pause_time)
+    # write_and_pause(screen, 'Sound and Movement', text_pause_time)
+    display_colored_text_until_space("""<green>Sound</green> and <red>Movement</red>
+                             
+    You will be asked to respond to one of the two stimuli:
+    1. Sound : In which ear beep is played.
+    2. Movement : Where the object is moving.
+    
+    When the background is <green>GREEN</green>, respond to Sound.
+    When the background is <red>RED</red>, respond to Movement.
+    
+    Press the left or right arrow key
+    based on the sound or movement
+    as indicated by the background colour.""")
     
     # write_and_pause(screen, 'Neutral Mode', text_pause_time)
     # Neutral_obj = Neutral(screen, timer)
@@ -121,7 +145,7 @@ def sound_movement(num_neutral, num_block, num_mixed):
 
 
     # mixed design
-    write_and_pause(screen, 'Mixed Cases - RANDOM', text_pause_time)
+    # write_and_pause(screen, 'Mixed Cases - RANDOM', text_pause_time)
     choice_mat = np.ones((2, 2))*num_mixed
     choice_array_mixed = ['00' for i in range(num_mixed)] + ['01' for i in range(num_mixed)] + ['10' for i in range(num_mixed)] + ['11' for i in range(num_mixed)]
     np.random.shuffle(choice_array_mixed)
@@ -150,7 +174,20 @@ def sound_movement(num_neutral, num_block, num_mixed):
 
 def direction_sound(num_neutral, num_block, num_mixed):
         
-    write_and_pause(screen, 'Direction and Sound', text_pause_time)
+    # write_and_pause(screen, 'Direction and Sound', text_pause_time)
+    display_colored_text_until_space("""<blue>Direction</blue> and <green>Sound</green>
+                                     
+    You will be asked to respond to one of the two stimuli:
+    1. Direction : Where the arrow head is pointing.
+    2. Sound : In which ear beep is played.
+    
+    When the background is <blue>BLUE</blue>, respond to Direction.
+    When the background is <green>GREEN</green>, respond to Sound.
+    
+    Press the left or right arrow key
+    based on the direction or sound
+    as indicated by the background colour.""")
+    
     
     # write_and_pause(screen, 'Neutral Mode', text_pause_time)
     # Neutral_obj = Neutral(screen, timer)
@@ -179,7 +216,7 @@ def direction_sound(num_neutral, num_block, num_mixed):
     #             print("Invalid case - (Needs to Be either Congruent or Conflict)!")
 
     # mixed design
-    write_and_pause(screen, 'Mixed Cases - RANDOM', text_pause_time)
+    # write_and_pause(screen, 'Mixed Cases - RANDOM', text_pause_time)
     choice_mat = np.ones((2, 2))*num_mixed
     choice_array_mixed = ['00' for i in range(num_mixed)] + ['01' for i in range(num_mixed)] + ['10' for i in range(num_mixed)] + ['11' for i in range(num_mixed)]
     np.random.shuffle(choice_array_mixed)
@@ -227,6 +264,7 @@ def randomize_order_of_tasks():
 
 
 def driver():
+    run_random_instructions()
     with open('data.csv', 'w') as file:
         file.write('polarity,todotask,othertask,correct,total_time,key_pressed,time_taken\n')
 
@@ -252,6 +290,8 @@ def driver():
     user_id = get_user_id()
     with open('data.csv', 'r') as file:
         data = file.read()
+    os.makedirs('data', exist_ok=True)
+    os.makedirs('results', exist_ok=True)
     with open(f'data/{user_id}.csv', 'w') as file:
         file.write(data)
 

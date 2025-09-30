@@ -2,7 +2,7 @@
     "num_neutral": 12,
     "num_congruent": 12,
     "num_conflict": 12,
-    "screen_width": 1700,
+    "screen_width": 1800,
     "screen_height": 900,
     "stimulus_duration": 1.2,
     "inter_stimulus_interval": 0.3,

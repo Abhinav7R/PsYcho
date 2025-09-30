@@ -1,4 +1,6 @@
 cd Original_Stroop
-# python main.py
+python main.py
 cd ../Block
+python main.py
+cd ../Random
 python main.py
