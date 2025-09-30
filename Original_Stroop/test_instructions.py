@@ -20,7 +20,7 @@ SMALL_FONT = pygame.font.Font(None, 60)
 
 # Colors for examples
 RED_COLOR = (255, 0, 0)
-BLUE_COLOR = (0, 0, 255)
+BLUE_COLOR = (36, 137, 245)
 GREEN_COLOR = (0, 255, 0)
 YELLOW_COLOR = (255, 255, 0)
 
@@ -114,81 +114,8 @@ def display_colored_text_until_space(text, default_color=None, font=None):
                 sys.exit()
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 return
-    """Display text with a specific word in a different color"""
-    screen.fill(background_color)
-    
-    # Calculate total lines and starting position
-    all_lines = lines_before + [word] + lines_after
-    total_height = len(all_lines) * FONT.get_height()
-    start_y = (HEIGHT - total_height) // 2
-    
-    # Display lines before the colored word
-    for i, line in enumerate(lines_before):
-        text_surface = FONT.render(line, True, main_color)
-        text_rect = text_surface.get_rect(center=(WIDTH // 2, start_y + i * FONT.get_height()))
-        screen.blit(text_surface, text_rect)
-    
-    # Display the colored word
-    word_y = start_y + len(lines_before) * FONT.get_height()
-    word_surface = FONT.render(word, True, word_color)
-    word_rect = word_surface.get_rect(center=(WIDTH // 2, word_y))
-    screen.blit(word_surface, word_rect)
-    
-    # Display lines after the colored word
-    for i, line in enumerate(lines_after):
-        line_y = word_y + (i + 1) * FONT.get_height()
-        text_surface = FONT.render(line, True, main_color)
-        text_rect = text_surface.get_rect(center=(WIDTH // 2, line_y))
-        screen.blit(text_surface, text_rect)
-    
-    # Add instruction at bottom
-    instruction_text = "Press SPACE to continue"
-    instruction_surface = SMALL_FONT.render(instruction_text, True, (128, 128, 128))
-    instruction_rect = instruction_surface.get_rect(center=(WIDTH // 2, HEIGHT - 50))
-    screen.blit(instruction_surface, instruction_rect)
-    
-    pygame.display.flip()
 
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-                return
-
-def display_text_until_space(text, color, font=None):
-    """Display text until space key is pressed"""
-    if font is None:
-        font = FONT
-    
-    screen.fill(background_color)
-    
-    # Handle multi-line text
-    lines = text.split('\n')
-    total_height = len(lines) * font.get_height()
-    start_y = (HEIGHT - total_height) // 2
-    
-    for i, line in enumerate(lines):
-        text_surface = font.render(line, True, color)
-        text_rect = text_surface.get_rect(center=(WIDTH // 2, start_y + i * font.get_height()))
-        screen.blit(text_surface, text_rect)
-    
-    # Add instruction at bottom
-    instruction_text = "Press SPACE to continue"
-    instruction_surface = SMALL_FONT.render(instruction_text, True, (128, 128, 128))
-    instruction_rect = instruction_surface.get_rect(center=(WIDTH // 2, HEIGHT - 50))
-    screen.blit(instruction_surface, instruction_rect)
-    
-    pygame.display.flip()
-
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-                return
+def display_text_until_space(text, color=(255, 255, 255), font=None):
     """Display text until space key is pressed"""
     if font is None:
         font = FONT
@@ -223,7 +150,9 @@ def display_text_until_space(text, color, font=None):
 
 def welcome_screen():
     """Display welcome screen"""
-    welcome_text = """Welcome to the Stroop Test!
+    welcome_text = """Welcome !!!
+
+    Level 1
     Just follow the instructions and enjoy the game.
 """
     
@@ -231,7 +160,7 @@ def welcome_screen():
 
 def instruction_slide_1():
     """First instruction slide - Overview"""
-    instruction_text = """How the Test Works:
+    instruction_text = """How this level Works:
     
 You will see words displayed on the screen.
 but they may appear in different colors.
@@ -263,7 +192,7 @@ you should say the COLOR the word appears in,
 regardless of what the word says.
 
 For example:
-If you see the word <blue>RED</blue> (in <blue>blue</blue> color),
+If you see the word <blue>RED</blue> (in blue color),
 you should say "BLUE"."""
     
     display_colored_text_until_space(instruction_text, text_color)

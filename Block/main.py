@@ -32,18 +32,42 @@ pause(1)
 
 def movement_direction(num_neutral, num_block, num_mixed):
 
-    write_and_pause(screen, 'Movement and Direction', text_pause_time)
+    # write_and_pause(screen, 'Movement and Direction', text_pause_time)
+    display_text_until_space("""Movement and Direction
+                             
+    You will be asked to respond to two types of stimuli:
+    1. Movement : Where the object is moving.
+    2. Direction : Where the arrow head is pointing.
+    Press the corresponding key as per instructions.""")
 
     # write_and_pause(screen, 'Neutral Mode', text_pause_time)
     Neutral_obj = Neutral(screen, timer)
 
-    write_and_pause(screen, 'Movement', text_pause_time)
+    # write_and_pause(screen, 'Movement', text_pause_time)
+    display_text_until_space("""Movement
+                             
+    You have to respond to the movement of the object.
+    Press the LEFT arrow key if the object is moving LEFT.
+    Press the RIGHT arrow key if the object is moving RIGHT.""")
+
     Neutral_obj.createScene(tasks=['Movement'], num_scenes= num_neutral, speed=parameters['speed'], time= parameters['time'], color= parameters['color'], radius= parameters['radius'], arrow_dims= parameters['arrow_dims'])
     
-    write_and_pause(screen, 'Direction', text_pause_time)
+    # write_and_pause(screen, 'Direction', text_pause_time)
+    display_text_until_space("""Direction
+                             
+    You have to respond to the direction of the arrow.
+    Press the LEFT arrow key if the arrow is pointing LEFT.
+    Press the RIGHT arrow key if the arrow is pointing RIGHT.
+    """)
     Neutral_obj.createScene(tasks=['Direction'], num_scenes=num_neutral, speed=parameters['speed'], time= parameters['time'], color= parameters['color'], radius= parameters['radius'], arrow_dims= parameters['arrow_dims'], frequency=500, volume=10)
         
-    write_and_pause(screen, 'Mixed Cases - BLOCK', text_pause_time)
+    # write_and_pause(screen, 'Mixed Cases - BLOCK', text_pause_time)
+    display_text_until_space("""Now, Movement and Direction stimuli are together!
+                             
+    You will be asked to respond to two types of stimuli:
+    1. Movement : Where the object is moving.
+    2. Direction : Where the arrow head is pointing.
+    Press the corresponding key as per instructions.""")
     
     # block design
     choice_array = ['Conflict' for i in range(num_block)] + ['Congruent' for i in range(num_block)]
@@ -91,18 +115,42 @@ def movement_direction(num_neutral, num_block, num_mixed):
 
 def sound_movement(num_neutral, num_block, num_mixed):
     
-    write_and_pause(screen, 'Sound and Movement', text_pause_time)
+    # write_and_pause(screen, 'Sound and Movement', text_pause_time)
+    display_text_until_space("""Sound and Movement
+                             
+    You will be asked to respond to two types of stimuli:
+    1. Sound : In which ear beep is played.
+    2. Movement : Where the object is moving.
+    Press the corresponding key as per instructions.""")
     
     # write_and_pause(screen, 'Neutral Mode', text_pause_time)
     Neutral_obj = Neutral(screen, timer)
 
-    write_and_pause(screen, 'Sound', text_pause_time)
+    # write_and_pause(screen, 'Sound', text_pause_time)
+    display_text_until_space("""Sound
+                             
+    You have to respond to the sound(beep) played.
+    Press the LEFT arrow key if the beep is played in LEFT ear.
+    Press the RIGHT arrow key if the beep is played in RIGHT ear.""")
+    
     Neutral_obj.createScene(tasks=['Sound'], num_scenes= num_neutral, speed=parameters['speed'], time= parameters['time'], color= parameters['color'], radius= parameters['radius'], arrow_dims= parameters['arrow_dims'], frequency=500, volume=10)
     
-    write_and_pause(screen, 'Movement', text_pause_time)
+    # write_and_pause(screen, 'Movement', text_pause_time)
+    display_text_until_space("""Movement
+                             
+    You have to respond to the movement of the object.
+    Press the LEFT arrow key if the object is moving LEFT.
+    Press the RIGHT arrow key if the object is moving RIGHT.""")
+    
     Neutral_obj.createScene(tasks=['Movement'], num_scenes=num_neutral, speed=parameters['speed'], time= parameters['time'], color= parameters['color'], radius= parameters['radius'], arrow_dims= parameters['arrow_dims'])
         
-    write_and_pause(screen, 'Mixed Cases - BLOCK', text_pause_time)
+    # write_and_pause(screen, 'Mixed Cases - BLOCK', text_pause_time)
+    display_text_until_space("""Now, Sound and Movement stimuli are together!
+                             
+    You will be asked to respond to two types of stimuli:
+    1. Sound : In which ear beep is played.
+    2. Movement : Where the object is moving.
+    Press the corresponding key as per instructions.""")    
     
     # block design
     choice_array = ['Conflict' for i in range(num_block)] + ['Congruent' for i in range(num_block)]
@@ -150,18 +198,43 @@ def sound_movement(num_neutral, num_block, num_mixed):
 
 def direction_sound(num_neutral, num_block, num_mixed):
         
-    write_and_pause(screen, 'Direction and Sound', text_pause_time)
+    # write_and_pause(screen, 'Direction and Sound', text_pause_time)
+    display_text_until_space("""Direction and Sound
+                             
+    You will be asked to respond to two types of stimuli:
+    1. Direction : Where the arrow head is pointing.
+    2. Sound : In which ear beep is played.
+    Press the corresponding key as per instructions.""")
     
     # write_and_pause(screen, 'Neutral Mode', text_pause_time)
     Neutral_obj = Neutral(screen, timer)
 
-    write_and_pause(screen, 'Direction', text_pause_time)
+    # write_and_pause(screen, 'Direction', text_pause_time)
+    display_text_until_space("""Direction
+                             
+    You have to respond to the direction of the arrow.
+    Press the LEFT arrow key if the arrow is pointing LEFT.
+    Press the RIGHT arrow key if the arrow is pointing RIGHT.
+    """)
+    
     Neutral_obj.createScene(tasks=['Direction'], num_scenes= num_neutral, speed=parameters['speed'], time= parameters['time'], color= parameters['color'], radius= parameters['radius'], arrow_dims= parameters['arrow_dims'])
     
-    write_and_pause(screen, 'Sound', text_pause_time)
+    # write_and_pause(screen, 'Sound', text_pause_time)
+    display_text_until_space("""Sound
+                             
+    You have to respond to the sound (beep) played.
+    Press the LEFT arrow key if the beep is played in the LEFT ear.
+    Press the RIGHT arrow key if the beep is played in the RIGHT ear.
+    """)
     Neutral_obj.createScene(tasks=['Sound'], num_scenes=num_neutral, speed=parameters['speed'], time= parameters['time'], color= parameters['color'], radius= parameters['radius'], arrow_dims= parameters['arrow_dims'], frequency=500, volume=10)
         
-    write_and_pause(screen, 'Mixed Cases - BLOCK', text_pause_time)
+    # write_and_pause(screen, 'Mixed Cases - BLOCK', text_pause_time)
+    display_text_until_space("""Now, Direction and Sound stimuli are together!
+                             
+    You will be asked to respond to two types of stimuli:
+    1. Direction : Where the arrow head is pointing.
+    2. Sound : In which ear beep is played.
+    Press the corresponding key as per instructions.""")
     
     # block design
     choice_array = ['Conflict' for i in range(num_block)] + ['Congruent' for i in range(num_block)]
@@ -235,7 +308,7 @@ def driver():
 
     no_use_obj = Neutral(screen, timer)
 
-    write_and_pause(screen, 'Welcome !!', text_pause_time)
+    # write_and_pause(screen, 'Welcome !!', text_pause_time)
     
     # refractory test  -> get refractory time as output
 

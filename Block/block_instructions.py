@@ -116,7 +116,7 @@ def display_colored_text_until_space(text, default_color=None, font=None):
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 return
 
-def display_text_until_space(text, color, font=None):
+def display_text_until_space(text, color=(255, 255, 255), font=None):
     """Display text until space key is pressed"""
     if font is None:
         font = FONT
@@ -161,7 +161,7 @@ def block_explanation():
     Three types of stimuli will be presented to you.
 
     Direction : Where the arrow head is pointing. 
-    Movement : Where the Object is moving.
+    Movement : Where the object is moving.
     Sound : In which ear beep is played.
     """
     
@@ -180,7 +180,6 @@ def block_back_color_explanation():
 
         <highlight>No need to remember background colours,</highlight> 
         <highlight>instructions will be present.</highlight>
-        Follow the instructions carefully.
     """
     
     display_colored_text_until_space(neutral_text)
@@ -193,8 +192,7 @@ def run_block_instructions():
     block_back_color_explanation()
     # Final confirmation
     final_text = """<highlight>Get Ready!</highlight>
-    
-Press SPACE to begin."""
+    """
     display_colored_text_until_space(final_text)
 
 def main():
